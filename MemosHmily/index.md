@@ -304,14 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const wrapper = document.getElementById('memos-wrapper');
     if (wrapper) {
         const footer = document.createElement('div');
-        // 直接设置样式
         footer.style.textAlign = 'center';
         footer.style.marginBottom = '30px';
         footer.style.fontSize = '12px';
-        footer.style.color = 'var(--text-sub)'; // 跟随主题颜色
-        // 设置内容
-        footer.innerHTML = '本页面由 <a href="https://www.hmily.ren/" target="_blank" style="color: var(--link-color); text-decoration: none;">MemosHmily</a> 提供';
-        // 添加到容器最底部
+        footer.style.color = 'var(--text-sub)'; 
+        footer.innerHTML = '本页面由 <a href="https://github.com/hmilylsc/MemosHmily" target="_blank" style="color: var(--link-color); text-decoration: none;">MemosHmily</a> 提供';
         wrapper.appendChild(footer);
     }
 	
