@@ -1,5 +1,5 @@
 # MemosHmily
-简介：通过Memos的API新建的Hexo页面：在Memos上发布新内容，即可在Hexo博客页面同步显示。
+**简介：通过Memos的API新建的Hexo页面：在Memos上发布新内容，即可在Hexo博客页面同步显示。**
 
 🌸展示效果参考的朋友圈样式
 
