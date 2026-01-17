@@ -28,18 +28,23 @@
 **目标代码在 177 - 181 行**
 
 1.数据源地址 Memos 服务端地址。【替换成自己的 Memos 地址】
+
 **host: 'https://life.hmily.ren'**
 
 2.单次加载数量。
+
 **pageSize: 10**
 
 3.头像链接
+
 **avatarUrl: 'https://lsc.hmily.ren/image/260.png'**
 
 4.显示的昵称
+
 **nickname: 'Cookie'**
 
 5.开启图片灯箱效果（大图浏览）
+
 **enableFancybox: true**
 
 ## 图片展示
