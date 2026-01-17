@@ -13,9 +13,9 @@
 
 ## Hexo使用方法
 
-1.在source文件夹📂新建memos文件夹
+1.在 source 文件夹内新建 MemosHmily 文件夹
 
-2.下载 index.md 到 memos文件夹内
+2.下载 index.md 到 MemosHmily 文件夹内
 
 3.hexo g && hexo s 
 
