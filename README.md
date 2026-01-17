@@ -1,11 +1,13 @@
 # MemosHmily
-**简介：通过Memos的API新建的Hexo页面：在Memos上发布新内容，即可在Hexo博客页面同步显示。**
+**通过Memos的API新建的Hexo页面：在Memos上发布新内容，即可在Hexo博客页面同步显示。**
 
 🌸展示效果参考的朋友圈样式
 
 🌸时间显示也是参考的朋友圈逻辑
 
 🌸图片最多支持9宫格显示还是参考的朋友圈逻辑
+
+🍂图片展示为缩略图，点开后图片灯箱效果展示为原图
 
 
 
@@ -26,16 +28,26 @@
 **目标代码在 177 - 181 行**
 
 1.数据源地址 Memos 服务端地址。【替换成自己的 Memos 地址】
-host: 'https://life.hmily.ren'
+**host: 'https://life.hmily.ren'**
 
 2.单次加载数量。
-pageSize: 10
+**pageSize: 10**
 
 3.头像链接
-avatarUrl: 'https://lsc.hmily.ren/image/260.png'
+**avatarUrl: 'https://lsc.hmily.ren/image/260.png'**
 
 4.显示的昵称
-nickname: 'Cookie'
+**nickname: 'Cookie'**
 
 5.开启图片灯箱效果（大图浏览）
-enableFancybox: true
+**enableFancybox: true**
+
+## 图片展示
+
+💻电脑：
+
+<img src="https://lsc.hmily.ren/github/m2.png" style="zoom: 80%;" />
+
+手机📱：
+
+<img src="https://lsc.hmily.ren/github/m1.png" style="zoom: 80%;" />
