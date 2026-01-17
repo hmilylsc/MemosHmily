@@ -19,7 +19,7 @@
 
 3.hexo g && hexo s 
 
-4.访问 http://localhost:4000/memos/ 查看效果
+4.访问 http://localhost:4000/MemosHmily/ 查看效果
 
 
 
