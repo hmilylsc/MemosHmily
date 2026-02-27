@@ -14,7 +14,6 @@ aside: false
     <div id="memos-load-more" style="display:none; text-align:center; margin-top:30px; margin-bottom: 20px;">
         <button class="load-btn">加载更多</button>
     </div>
-	
 </div>
 
 <style>
@@ -112,6 +111,24 @@ aside: false
     word-wrap: break-word;
     text-align: justify;
 }
+
+/* --- 新增：折叠展开功能相关 CSS --- */
+.memo-text.collapsed {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6; /* 超出6行（约300字正常排版）自动折叠并显示省略号 */
+    overflow: hidden;
+}
+.memo-toggle-btn {
+    color: var(--link-color);
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 6px;
+    margin-top: -2px;
+    display: inline-block;
+    user-select: none;
+}
+/* -------------------------------- */
 
 .memo-text a { color: var(--link-color); text-decoration: none; }
 .memo-text img { max-width: 100%; border-radius: 4px; display: block; margin: 5px 0; }
@@ -264,13 +281,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
     
                 if (!item.content && images.length === 0) return;
+
+                /* --- 新增：判断字数是否大于等于300字 --- */
+                const rawContent = item.content || '';
+                const needCollapse = rawContent.length >= 300;
+                /* -------------------------------------- */
     
                 const html = `
                     <div class="memo-item">
                         <div class="memo-avatar"><img src="${CONFIG.avatarUrl}"></div>
                         <div class="memo-content-wrapper">
                             <div class="memo-name">${CONFIG.nickname}</div>
-                            <div class="memo-text">${parseContent(item.content || '')}</div>
+                            
+                            <div class="memo-text ${needCollapse ? 'collapsed' : ''}">${parseContent(rawContent)}</div>
+                            ${needCollapse ? '<div class="memo-toggle-btn">全文</div>' : ''}
+                            
                             ${galleryHtml}
                             <div class="memo-meta">${formatTime(item.createTime)}</div>
                         </div>
@@ -300,8 +325,24 @@ document.addEventListener('DOMContentLoaded', () => {
         loadBtnEl.innerText = '加载中...';
         loadMemos(nextPageToken);
     });
+
+    /* --- 新增：为全文/收起按钮添加点击事件代理 --- */
+    container.addEventListener('click', (e) => {
+        if (e.target.classList.contains('memo-toggle-btn')) {
+            const btn = e.target;
+            const textEl = btn.previousElementSibling; // 获取上一个兄弟节点（即 .memo-text）
+            if (textEl.classList.contains('collapsed')) {
+                textEl.classList.remove('collapsed');
+                btn.innerText = '收起';
+            } else {
+                textEl.classList.add('collapsed');
+                btn.innerText = '全文';
+            }
+        }
+    });
+    /* ------------------------------------------ */
     
-	const wrapper = document.getElementById('memos-wrapper');
+    const wrapper = document.getElementById('memos-wrapper');
     if (wrapper) {
         const footer = document.createElement('div');
         footer.style.textAlign = 'center';
@@ -311,12 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
         footer.innerHTML = '本页面由 <a href="https://github.com/hmilylsc/MemosHmily" target="_blank" style="color: var(--link-color); text-decoration: none;">MemosHmily</a> 提供';
         wrapper.appendChild(footer);
     }
-	
-	
-	
-	
-	
+    
     loadMemos();
 });
-
 </script>
