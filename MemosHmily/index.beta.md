@@ -20,6 +20,9 @@ aside: false
 /* --- 基础配置 --- */
 /* --- 代码来自  https://www.hmily.ren --- */
 .fancybox-container { z-index: 100000 !important; }
+
+
+
 :root {
     --memo-avatar-size: 38px;
     --memo-gap: 8px;
@@ -109,7 +112,7 @@ aside: false
     margin-bottom: 6px;
     white-space: pre-wrap;
     word-wrap: break-word;
-    text-align: justify;
+    text-align: left;
 	/* --- 新增：提示浏览器此元素的高度和内容可能会变，分配独立渲染层优化重绘【will-change: height;】 --- */
     
 }
@@ -205,6 +208,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadBtnEl = loadMoreBtn.querySelector('.load-btn');
     let nextPageToken = '';
     let isLoading = false;
+	
+	let lastScrollY = 0;
+
+    function initFancybox() {
+        if (!window.Fancybox) return;
+
+        Fancybox.bind('[data-fancybox]', {
+            animated: true,
+            autoFocus: true,
+            trapFocus: true,
+            placeFocusBack: true,
+            dragToClose: true,
+            hideScrollbar: false,
+            on: {
+                init: () => {
+                    lastScrollY = window.scrollY || window.pageYOffset;
+                },
+                destroy: () => {
+                    requestAnimationFrame(() => {
+                        window.scrollTo(0, lastScrollY);
+                    });
+                }
+            }
+        });
+    }
+
+    initFancybox();
     
     // 时间逻辑
     const formatTime = (isoString) => {
