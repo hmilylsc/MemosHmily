@@ -49,12 +49,6 @@
 
 **enableFancybox: true**
 
-## 图片展示
+## 展示
 
-💻电脑：
-
-<img src="https://lsc.hmily.ren/github/m2.png" style="zoom: 80%;" />
-
-手机📱：
-
-<img src="https://lsc.hmily.ren/github/m1.png" style="zoom: 80%;" />
+展示页面：https://www.hmily.ren/MemosHmily/
